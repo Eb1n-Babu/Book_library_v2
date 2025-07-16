@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from .models import Book
 from .serializers import BookSerializer
 
-@api_view(['GET', 'POST'])
+@api_view(['GET','POST'])
 def book_list(request):
     if request.method == 'GET':
         books = Book.objects.all()
@@ -20,6 +20,6 @@ def book_list(request):
     return None
 
 
-class BookList(generics.ListAPIView):
+class BookList(generics.ListCreateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
